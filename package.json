@@ -1,0 +1,24 @@
+{
+  "name": "to-do-lists-manager",
+  "version": "1.0.0",
+  "description": "A To-Do Lists Manager",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --progress --watch --mode=development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ty-Mejia/To-Do-Lists-Manager.git"
+  },
+  "author": "Carlos Diaz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ty-Mejia/To-Do-Lists-Manager/issues"
+  },
+  "homepage": "https://github.com/Ty-Mejia/To-Do-Lists-Manager#readme",
+  "devDependencies": {
+    "date-fns": "^2.17.0",
+    "webpack-cli": "^4.5.0"
+  }
+}
