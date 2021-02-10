@@ -1,0 +1,100 @@
+"use strict"
+
+// creates a btn
+function createBtn(id, text) {
+    const btn = document.createElement('button');
+    btn.setAttribute('id', id);
+
+    const span = document.createElement('span');
+    span.setAttribute('class', 'span');
+    span.textContent = text;
+
+    btn.appendChild(span);
+
+    return btn;
+}
+
+// create header
+function createHeader(id, text) {
+    const header = document.createElement('header');
+    header.setAttribute('id', id);
+    
+    const headerText = document.createElement('h1');
+    headerText.textContent = text;
+    header.appendChild(headerText);
+
+    return header;
+}
+
+// create footer
+function createFooter(id, text) {
+    const footer = document.createElement('footer');
+    footer.setAttribute('id', id);
+
+    const footerText = document.createElement('h5');
+    footerText.textContent = text;
+    footer.appendChild(footerText);
+    
+    return footer;
+}
+
+function createMain(id) {
+    const main = document.createElement('div');
+    main.setAttribute('id', id);
+    
+    return main;
+}
+
+// create side bar
+function createSidebar(id, text) {
+    const sidebar = document.createElement('div');
+    sidebar.setAttribute('id', id);
+
+    const title = document.createElement('h3');
+    title.textContent = text;
+    
+    const btns = document.createElement('div');
+    const addListBtn = createBtn('add-list-btn', 'Add List');
+    const addProjectBtn = createBtn('add-project-btn', 'Add Project');
+    btns.appendChild(addListBtn);
+    btns.appendChild(addProjectBtn);
+
+    sidebar.appendChild(title);
+    sidebar.appendChild(btns)
+
+    return sidebar;
+}
+
+// create main
+function createTaskDisplay(id, text) {
+    const taskDisplay = document.createElement('div');
+    taskDisplay.setAttribute('id', id);
+
+    const title = document.createElement('h2');
+    title.textContent = text;
+
+    const btn = createBtn('add-task-btn', 'Add Task');
+    
+    taskDisplay.appendChild(title);
+    taskDisplay.appendChild(btn);
+
+    return taskDisplay; 
+}
+
+function loadPage() {
+    const content = document.getElementById('content');
+    const header = createHeader('header', 'To-Do Task Manager');
+    const footer = createFooter('footer', '@All rights reserved');
+    const sidebar = createSidebar('sidebar', 'Projects');
+    const display = createTaskDisplay('task-display', 'Tasks');
+
+    const main = createMain('main');
+    main.appendChild(sidebar);
+    main.appendChild(display);
+
+    content.appendChild(header);
+    content.appendChild(main);
+    content.appendChild(footer);
+}
+
+export default loadPage;

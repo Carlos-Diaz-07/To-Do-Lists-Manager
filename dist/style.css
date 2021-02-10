@@ -1,0 +1,22 @@
+#main {
+    display: flex;
+}
+
+div {
+    justify-content: center;
+    align-items: center;
+}
+
+#sidebar {
+    min-width: 10%;
+    max-width: 20%;
+}
+
+#task-display {
+    min-width: 80%;
+    max-width: 90%;
+}
+
+h2 {
+    max-width: 20%;
+}
