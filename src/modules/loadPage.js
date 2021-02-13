@@ -52,20 +52,27 @@ function createSidebar(id, text) {
 
     const title = document.createElement('h3');
     title.textContent = text;
-    
+
+    const input = document.createElement('input');
+    input.setAttribute('id', 'input')
+    input.setAttribute('required', 'required');
+    input.setAttribute('pattern', '[a-z0-9]/ig');
+
     const btns = document.createElement('div');
+    btns.setAttribute('id', 'sidebar-btns');
     const addListBtn = createBtn('add-list-btn', 'Add List');
     const addProjectBtn = createBtn('add-project-btn', 'Add Project');
+
     btns.appendChild(addListBtn);
     btns.appendChild(addProjectBtn);
 
     sidebar.appendChild(title);
+    sidebar.appendChild(input);
     sidebar.appendChild(btns)
 
     return sidebar;
 }
 
-// create main
 function createTaskDisplay(id, text) {
     const taskDisplay = document.createElement('div');
     taskDisplay.setAttribute('id', id);

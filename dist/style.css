@@ -8,6 +8,8 @@ div {
 }
 
 #sidebar {
+    display: flex;
+    flex-direction: column;
     min-width: 10%;
     max-width: 20%;
 }

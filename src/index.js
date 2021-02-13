@@ -1,5 +1,7 @@
-"use strict"
+"use strict";
 
-import loadPage from "./modules/loadPage"
+import loadPage from "./modules/loadPage";
+
 
 loadPage();
+

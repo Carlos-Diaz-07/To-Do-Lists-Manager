@@ -18,7 +18,13 @@
   },
   "homepage": "https://github.com/Ty-Mejia/To-Do-Lists-Manager#readme",
   "devDependencies": {
+    "@babel/core": "^7.12.13",
+    "@babel/preset-env": "^7.12.13",
+    "babel-loader": "^8.2.2",
     "date-fns": "^2.17.0",
+    "eslint": "^7.19.0",
+    "eslint-config-prettier": "^7.2.0",
+    "webpack": "^5.21.2",
     "webpack-cli": "^4.5.0"
   }
 }
