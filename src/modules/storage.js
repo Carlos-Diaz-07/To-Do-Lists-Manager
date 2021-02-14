@@ -70,4 +70,4 @@ const addToStorage = (() => {
 
 console.log(storage);
 
-export default addToStorage;
+export { addToStorage, storage };

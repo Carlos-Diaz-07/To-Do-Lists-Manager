@@ -1,7 +1,8 @@
 "use strict";
 
 import loadPage from "./modules/loadPage";
-import addToStorage from "./modules/storage";
+import { addToStorage } from "./modules/storage";
+import displayProjects from "./modules/UI";
 
 loadPage();
 
@@ -13,3 +14,5 @@ addListBtn.addEventListener("click", addToStorage.list);
 
 const addTaskBtn = document.getElementById("add-task-btn");
 addTaskBtn.addEventListener("click", addToStorage.task);
+
+displayProjects();
