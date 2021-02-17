@@ -1,10 +1,11 @@
 "use strict";
 
 import loadPage from "./modules/loadPage";
-import { addToStorage } from "./modules/storage";
-import displayProjects from "./modules/UI";
+import addToStorage from "./modules/createEntry";
+import { renderStorage } from "./modules/renders";
 
 loadPage();
+renderStorage();
 
 const addProjectBtn = document.getElementById("add-project-btn");
 addProjectBtn.addEventListener("click", addToStorage.project);
@@ -14,5 +15,3 @@ addListBtn.addEventListener("click", addToStorage.list);
 
 const addTaskBtn = document.getElementById("add-task-btn");
 addTaskBtn.addEventListener("click", addToStorage.task);
-
-displayProjects();

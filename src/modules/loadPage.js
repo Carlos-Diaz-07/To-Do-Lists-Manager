@@ -88,9 +88,13 @@ function createTaskDisplay(id, text) {
 
 	const btn = createBtn("add-task-btn", "Add Task");
 
+	const tasksContainer = document.createElement('div');
+	tasksContainer.setAttribute('id', 'tasks-container');
+	
 	taskDisplay.appendChild(title);
 	taskDisplay.appendChild(input);
 	taskDisplay.appendChild(btn);
+	taskDisplay.appendChild(tasksContainer);
 
 	return taskDisplay;
 }
