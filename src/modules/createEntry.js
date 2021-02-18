@@ -1,13 +1,13 @@
 "use strict";
 
-import { storage } from './storage'
+import { storage } from "./storage";
+import render from "./renders";
 
 function saveInLocal() {
 	localStorage.setItem("myToDos", JSON.stringify(storage));
-};
+}
 
 const createEntry = (() => {
-
 	// create projects
 	const newProject = (projectName) => {
 		const lists = [];
@@ -17,15 +17,15 @@ const createEntry = (() => {
 
 	// create lists
 	const newList = (listName) => {
-			const tasks = [];
-		
+		const tasks = [];
+
 		return { listName, tasks };
 	};
 
 	// create task
 	const newTask = (taskName) => {
-			const priority = "";
-			const dueDate = "";
+		const priority = "";
+		const dueDate = "";
 
 		return { taskName, priority, dueDate };
 	};
@@ -40,17 +40,19 @@ const addToStorage = (() => {
 		const newProject = createEntry.newProject(newProjectName);
 
 		storage.push(newProject);
+		render.displayProject(newProject);
 		saveInLocal();
 	};
 
 	const list = () => {
 		const newListName = document.getElementById("sidebar-input").value;
 		const newList = createEntry.newList(newListName);
-		const inProject = 'no project'; // * change for active project
+		const inProject = "no project"; // * change for active project
 
 		storage.forEach((project) => {
 			if (project.projectName === inProject) {
 				project.lists.push(newList);
+				render.displayList(newList, project);
 				saveInLocal();
 			}
 		});
@@ -65,9 +67,10 @@ const addToStorage = (() => {
 			project.lists.forEach((list) => {
 				if (list.listName === inList) {
 					list.tasks.push(newTask);
+					render.displayTask(newTask, list);
 					saveInLocal();
 				}
-			})
+			});
 		});
 	};
 

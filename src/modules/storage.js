@@ -7,9 +7,7 @@ let storage = [
 		lists: [
 			{
 				listName: "shopping",
-				tasks: [
-					{ taskName: "task1", priority: "red", dueDate: "12062021" }
-				],
+				tasks: [{ taskName: "task1", priority: "red", dueDate: "12062021" }],
 			},
 		],
 	},
@@ -33,7 +31,7 @@ const checkLocalStorage = () => {
 	if (localStorage.getItem("myToDos")) {
 		let savedStorage = localStorage.getItem("myToDos");
 		storage = JSON.parse(savedStorage);
-	} 
+	}
 };
 
 export { storage, checkLocalStorage };

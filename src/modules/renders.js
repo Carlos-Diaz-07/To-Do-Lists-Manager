@@ -2,107 +2,85 @@
 
 import { storage } from "./storage";
 
-const displayProject = (project) => {
-	const projectDiv = document.createElement("div");
-	const sidebar = document.getElementById("sidebar");
-	const text = project.projectName;
+const render = (() => {
+	const displayProject = (project) => {
+		const projectDiv = document.createElement("div");
+		const sidebar = document.getElementById("sidebar");
+		const text = project.projectName;
 
-	projectDiv.setAttribute("class", "project");
-	projectDiv.setAttribute("id", text);
-	projectDiv.textContent = text;
+		const deleteBtn = document.createElement("button");
+		deleteBtn.setAttribute("class", "delete-btn");
 
-	sidebar.appendChild(projectDiv);
-};
+		projectDiv.setAttribute("class", "project");
+		projectDiv.setAttribute("id", text);
+		projectDiv.textContent = text;
+		projectDiv.appendChild(deleteBtn);
 
-const displayList = (list, project) => {
-	const listDiv = document.createElement("div");
-	const text = list.listName;
-	const inProject = document.getElementById(`${project.projectName}`); // add project by active class here...
-
-	listDiv.setAttribute("class", "list");
-	listDiv.setAttribute("in-project", project.projectName);
-	listDiv.textContent = text;
-
-	inProject.appendChild(listDiv);
-};
-
-const displayTask = (task, list) => {
-	const taskDiv = document.createElement("div");
-	const tasksContainer = document.getElementById("tasks-container"); // add list by active class here
-	const text = task.taskName;
-
-	taskDiv.setAttribute("class", "task");
-	taskDiv.setAttribute("in-list", list.listName);
-	taskDiv.textContent = text;
-
-	tasksContainer.appendChild(taskDiv);
-};
-
-const renderStorage = () => {
-	const displayAllProjects = () => {
-		storage.forEach((project) => {
-			displayProject(project);
-		});
+		sidebar.appendChild(projectDiv);
 	};
 
-	const displayAllLists = () => {
-		storage.forEach((project) => {
-			project.lists.forEach((list) => {
-				displayList(list, project);
-			});
-		});
+	const displayList = (list, project) => {
+		const listDiv = document.createElement("div");
+		const text = list.listName;
+		const inProject = document.getElementById(`${project.projectName}`); // add project by active class here...
+
+		const deleteBtn = document.createElement("button");
+		deleteBtn.setAttribute("class", "delete-btn");
+
+		listDiv.setAttribute("class", "list");
+		listDiv.setAttribute("in-project", project.projectName);
+		listDiv.textContent = text;
+		listDiv.appendChild(deleteBtn);
+
+		inProject.appendChild(listDiv);
 	};
 
-	const displayAllTasks = () => {
-		storage.forEach((project) => {
-			project.lists.forEach((list) => {
-				list.tasks.forEach((task) => {
-					displayTask(task, list);
-				});
-			});
-		});
+	const displayTask = (task, list) => {
+		const taskDiv = document.createElement("div");
+		const tasksContainer = document.getElementById("tasks-container"); // add list by active class here
+		const text = task.taskName;
+
+		const deleteBtn = document.createElement("button");
+		deleteBtn.setAttribute("class", "delete-btn");
+
+		taskDiv.setAttribute("class", "task");
+		taskDiv.setAttribute("in-list", list.listName);
+		taskDiv.textContent = text;
+		taskDiv.appendChild(deleteBtn);
+
+		tasksContainer.appendChild(taskDiv);
 	};
 
-	displayAllProjects();
-	displayAllLists();
-	displayAllTasks();
-};
-
-// funtion that render new entrys
-const renderEntry = (() => {
-	const project = () => {
-		storage.forEach((project) => {
-			const newProject = document.getElementById("sidebar-input").value;
-			if (project.projectName === newProject) {
+	const displayStorage = () => {
+		const displayAllProjects = () => {
+			storage.forEach((project) => {
 				displayProject(project);
-			}
-		});
-	};
-	const list = () => {
-		storage.forEach((project) => {
-			project.lists.forEach((list) => {
-				const newList = document.getElementById("sidebar-input").value;
-				if (list.listName === newList) {
-					displayList(list, project);
-				}
 			});
-		});
-	};
+		};
 
-	const task = () => {
-		storage.forEach((project) => {
-			project.lists.forEach((list) => {
-				list.tasks.forEach((task) => {
-					const newTask = document.getElementById("task-input").value;
-					if ((task.taskName === newTask)) {
-						displayTask(task, list);
-					}
+		const displayAllLists = () => {
+			storage.forEach((project) => {
+				project.lists.forEach((list) => {
+					displayList(list, project);
 				});
 			});
-		});
+		};
+
+		const displayAllTasks = () => {
+			storage.forEach((project) => {
+				project.lists.forEach((list) => {
+					list.tasks.forEach((task) => {
+						displayTask(task, list);
+					});
+				});
+			});
+		};
+
+		displayAllProjects();
+		displayAllLists();
+		displayAllTasks();
 	};
 
-	return { project, list, task };
+	return { displayProject, displayList, displayTask, displayStorage };
 })();
-
-export { renderStorage, renderEntry };
+export default render;
