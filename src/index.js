@@ -3,8 +3,10 @@
 import loadPage from "./modules/loadPage";
 import addToStorage from "./modules/createEntry";
 import { renderStorage, renderEntry } from "./modules/renders";
+import { checkLocalStorage } from './modules/storage'
 
 loadPage();
+checkLocalStorage();
 renderStorage();
 
 const addProjectBtn = document.getElementById("add-project-btn");

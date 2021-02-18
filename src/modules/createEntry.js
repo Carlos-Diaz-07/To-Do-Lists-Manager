@@ -1,6 +1,10 @@
 "use strict";
 
-import storage from './storage'
+import { storage } from './storage'
+
+function saveInLocal() {
+	localStorage.setItem("myToDos", JSON.stringify(storage));
+};
 
 const createEntry = (() => {
 
@@ -36,6 +40,7 @@ const addToStorage = (() => {
 		const newProject = createEntry.newProject(newProjectName);
 
 		storage.push(newProject);
+		saveInLocal();
 	};
 
 	const list = () => {
@@ -46,6 +51,7 @@ const addToStorage = (() => {
 		storage.forEach((project) => {
 			if (project.projectName === inProject) {
 				project.lists.push(newList);
+				saveInLocal();
 			}
 		});
 	};
@@ -59,6 +65,7 @@ const addToStorage = (() => {
 			project.lists.forEach((list) => {
 				if (list.listName === inList) {
 					list.tasks.push(newTask);
+					saveInLocal();
 				}
 			})
 		});

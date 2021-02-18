@@ -1,6 +1,6 @@
 "use strict";
 
-import storage from "./storage";
+import { storage } from "./storage";
 
 const displayProject = (project) => {
 	const projectDiv = document.createElement("div");

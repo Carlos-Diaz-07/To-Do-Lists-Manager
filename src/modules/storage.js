@@ -1,7 +1,7 @@
 "use strict";
 
 // Storage array
-const storage = [
+let storage = [
 	{
 		projectName: "no project",
 		lists: [
@@ -28,6 +28,12 @@ const storage = [
 	},
 ];
 
-console.log(storage);
+// Check for data saved locally
+const checkLocalStorage = () => {
+	if (localStorage.getItem("myToDos")) {
+		let savedStorage = localStorage.getItem("myToDos");
+		storage = JSON.parse(savedStorage);
+	} 
+};
 
-export default storage;
+export { storage, checkLocalStorage };
